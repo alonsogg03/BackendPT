@@ -1,15 +1,17 @@
 package PeruTravel.backend.security;
 
+import java.security.Key;
+import java.util.Date;
+import java.util.function.Function;
+
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.stereotype.Service;
+
+import PeruTravel.backend.model.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.stereotype.Service;
-
-import java.security.Key;
-import java.util.Date;
-import java.util.function.Function;
 
 @Service
 public class JwtService {
@@ -44,5 +46,9 @@ public class JwtService {
 
     private boolean isTokenExpired(String token) {
         return getClaimFromToken(token, Claims::getExpiration).before(new Date());
+    }
+
+    public String getToken(User user) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }
